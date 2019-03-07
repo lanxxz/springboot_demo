@@ -3,6 +3,7 @@ package com.alien.practice.springboot_demo.repository;
 import com.alien.practice.springboot_demo.domain.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -35,5 +36,14 @@ public class UserRepository {
         Integer id = idGenerator.incrementAndGet();
         user.setId(id);
         return repository.put(id, user) == null;
+    }
+
+    public Collection<User> findAll() {
+//        List<User> list = new ArrayList<>();
+//        for (Map.Entry<Integer, User> entry: repository.entrySet()) {
+//            list.add(entry.getValue());
+//        }
+//        return  list;
+        return repository.values();
     }
 }
