@@ -11,6 +11,10 @@
 
     <artifactId>web</artifactId>
 
+
+    <!-- packaging 打包默认方式为jar  -->
+    <!--<packaging>war</packaging>-->
+
     <dependencies>
 
         <!-- 依赖于 persistence  -->
@@ -21,5 +25,17 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.alien.practice.springboot_demo.SpringbootDemoApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
