@@ -36,13 +36,13 @@
 ```  
 3.然后运行 mvn 打包命令
 ## war 包  
-1.同上1
-2.同上2
+1.同上1  
+2.同上2  
 3.在web模块的pom.xml文件中添加以下内容
 ```xml
 <packaging>war</packaging>
 ```  
-4.在web 模块的 main 目录下创建 webapp/WEB-INF/web.xml,并补全web.xml内容
+4.在web 模块的 main 目录下创建 webapp/WEB-INF/web.xml,并补全web.xml内容  
 5.然后运行 mvn 打包命令
 
 
