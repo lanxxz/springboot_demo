@@ -1,13 +1,13 @@
 *Spring Boot 练习学习项目*
 
-#mvn 打包命令  
+# mvn 打包命令  
  ```cmd
  mvn -Dmaven.test.skip -U clean package
  或者
  mvn -Dmaven.test.skip -U clean install
  ```  
 
-#打包知识点 
+# 打包知识点 
 ## jar 包  
 1.由于项目是分模块的，所以打包需要做一些改动，将主目录下的pom.xml中的下面这段话删除  
 ```xml
