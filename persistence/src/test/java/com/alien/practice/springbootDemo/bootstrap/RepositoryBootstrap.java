@@ -6,7 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = "com.alien.practice.springboot_demo")
+@ComponentScan(basePackages = "com.alien.practice.springboot_demo.repository")
 public class RepositoryBootstrap {
 
     public static void main(String[] args) {
