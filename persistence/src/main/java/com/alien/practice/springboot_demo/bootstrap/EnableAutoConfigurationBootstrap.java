@@ -1,4 +1,4 @@
-package com.alien.practice.springbootDemo.bootstrap;
+package com.alien.practice.springboot_demo.bootstrap;
 
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

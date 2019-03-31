@@ -23,12 +23,15 @@
         <module>web</module>
         <module>persistence</module>
         <module>model</module>
+        <module>spring-application</module>
     </modules>
 
     <!-- 使用 pom 表示主工程 （将多个model合并） -->
     <packaging>pom</packaging>
 
     <properties>
+        <!--<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+        <!--<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
         <java.version>1.8</java.version>
     </properties>
 
@@ -41,14 +44,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web/artifactId>
         </dependency>-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-webflux</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-autoconfigure</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
