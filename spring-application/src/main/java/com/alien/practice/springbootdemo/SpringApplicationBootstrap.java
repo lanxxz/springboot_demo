@@ -1,6 +1,7 @@
 package com.alien.practice.springbootdemo;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -31,6 +32,8 @@ public class SpringApplicationBootstrap {
         sources.add(ApplicationConfiguration.class.getName());
         SpringApplication application = new SpringApplication();
         application.setSources(sources);
+        //设置为非 Web 模式
+        application.setWebApplicationType(WebApplicationType.NONE);
         ConfigurableApplicationContext context = application.run(args);
 
         System.out.println("Bean is " + context.getBean(ApplicationConfiguration.class));
