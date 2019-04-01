@@ -1,0 +1,5 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.alien.practice.springbootdemo.context.AfterHelloWorldApplicationContextInitializer,\
+com.alien.practice.springbootdemo.context.HelloWorldApplicationContextInitializer
+
+
