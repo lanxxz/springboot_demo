@@ -3,3 +3,6 @@ com.alien.practice.springbootdemo.context.AfterHelloWorldApplicationContextIniti
 com.alien.practice.springbootdemo.context.HelloWorldApplicationContextInitializer
 
 
+org.springframework.context.ApplicationListener=\
+com.alien.practice.springbootdemo.listener.AfterHelloWorldApplicationListener,\
+com.alien.practice.springbootdemo.listener.HelloWorldApplicationListener
