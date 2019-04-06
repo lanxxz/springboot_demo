@@ -19,10 +19,10 @@ public class BeforeConfigFileApplicationListener implements SmartApplicationList
     @Override
     public int getOrder() {
         // 比 ConfigFileApplicationListener 优先级高
-        //return ConfigFileApplicationListener.DEFAULT_ORDER - 1;
+        return ConfigFileApplicationListener.DEFAULT_ORDER - 1;
 
         //比 ConfigFileApplicationListener 优先级低
-        return ConfigFileApplicationListener.DEFAULT_ORDER + 1;
+        //return ConfigFileApplicationListener.DEFAULT_ORDER + 1;
     }
 
 

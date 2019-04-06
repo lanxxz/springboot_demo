@@ -33,7 +33,7 @@ public class SpringApplicationBootstrap {
         SpringApplication application = new SpringApplication();
         application.setSources(sources);
         //设置为非 Web 模式
-        application.setWebApplicationType(WebApplicationType.NONE);
+//        application.setWebApplicationType(WebApplicationType.NONE);
         ConfigurableApplicationContext context = application.run(args);
 
         System.out.println("Bean is " + context.getBean(ApplicationConfiguration.class));
