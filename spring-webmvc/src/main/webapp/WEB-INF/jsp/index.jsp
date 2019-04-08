@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-
+    message:${message}<br/>
+    jsessionId:${jsessionId}<br/>
+    acceptLanguage:${acceptLanguage}<br/>
 </body>
 </html>
