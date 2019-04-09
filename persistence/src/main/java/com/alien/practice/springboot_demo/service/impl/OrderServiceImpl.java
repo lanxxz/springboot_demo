@@ -5,6 +5,7 @@ import com.alien.practice.springboot_demo.domain.OrderDTO;
 import com.alien.practice.springboot_demo.componment.AbstractHandler;
 import com.alien.practice.springboot_demo.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * 订单处理服务层业务具体实现
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Alien
  * @since 2019/4/9 22:22
  */
+@Service
 public class OrderServiceImpl implements IOrderService {
 
     @Autowired

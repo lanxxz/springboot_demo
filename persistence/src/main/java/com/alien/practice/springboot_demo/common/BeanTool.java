@@ -20,9 +20,9 @@ public class BeanTool implements ApplicationContextAware {
     private static ApplicationContext applicationContext;
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(ApplicationContext context) throws BeansException {
         if (applicationContext == null) {
-            applicationContext = applicationContext;
+            applicationContext = context;
         }
     }
 
