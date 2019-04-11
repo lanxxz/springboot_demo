@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @since: 2019/4/6 22:53
  */
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 public class WebMvcConfig implements WebMvcConfigurer  {
 
 //    <!--<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >-->
@@ -27,14 +27,14 @@ public class WebMvcConfig implements WebMvcConfigurer  {
 //        <!--<property name="prefix" value="/WEB-INF/jsp/" />-->
 //        <!--<property name="suffix" value=".jsp" />-->
 //    <!--</bean>-->
-    @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setViewClass(JstlView.class);
-        resolver.setPrefix("/WEB-INF/jsp/");
-        resolver.setSuffix(".jsp");
-        return resolver;
-    }
+//    @Bean
+//    public ViewResolver viewResolver() {
+//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//        resolver.setViewClass(JstlView.class);
+//        resolver.setPrefix("/WEB-INF/jsp/");
+//        resolver.setSuffix(".jsp");
+//        return resolver;
+//    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
