@@ -25,6 +25,7 @@
         <module>model</module>
         <module>spring-application</module>
         <module>spring-webmvc</module>
+        <module>springboot-webmvc</module>
     </modules>
 
     <!-- 使用 pom 表示主工程 （将多个model合并） -->
