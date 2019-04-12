@@ -60,5 +60,9 @@ public class ThymeleafTemplateBootstrap {
         String result = templateEngine.process(content, context);
         //输出渲染处理结果
         System.out.println(result);
+
+        //关闭流
+        inputStream.close();
+        outputStream.close();
     }
 }
