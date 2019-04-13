@@ -2,6 +2,7 @@ package com.alien.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -27,14 +28,19 @@ public class WebMvcConfig implements WebMvcConfigurer  {
 //        <!--<property name="prefix" value="/WEB-INF/jsp/" />-->
 //        <!--<property name="suffix" value=".jsp" />-->
 //    <!--</bean>-->
-//    @Bean
-//    public ViewResolver viewResolver() {
-//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//        resolver.setViewClass(JstlView.class);
-//        resolver.setPrefix("/WEB-INF/jsp/");
-//        resolver.setSuffix(".jsp");
-//        return resolver;
-//    }
+    @Bean
+    public ViewResolver viewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setViewClass(JstlView.class);
+        resolver.setPrefix("/WEB-INF/jsp/");
+        resolver.setSuffix(".jsp");
+        //ThymeleafViewResolver Ordered.LOWEST_PRECEDEENCE - 5
+        //优先级设置成高于 ThymeleafViewResolver
+        resolver.setOrder(Ordered.LOWEST_PRECEDENCE - 10);
+        //配置 ViewResolver 的 Content-Type
+        resolver.setContentType("text/xml;charset=UTF-8");
+        return resolver;
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

@@ -39,7 +39,7 @@ public class ThymeleafTemplateBootstrap {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         //创建渲染上下文
         Context context = new Context();
-        context.setVariable("message", "Hi, Alien!");
+        context.setVariable("message2", "Hi, Alien!");
 
         //读取内容 从 classpath:/templates/thymeleaf/hello-world.html
         //ResourceLoader
