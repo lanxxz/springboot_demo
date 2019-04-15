@@ -1,5 +1,7 @@
 package com.alien.web.config;
 
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 
 /**
  * Spring Web MVC 配置(类)
@@ -79,5 +82,20 @@ public class WebMvcConfig implements WebMvcConfigurer  {
 
         });
     }
+
+    @Bean
+    public WebServerFactoryCustomizer<TomcatServletWebServerFactory> customizer() {
+        return (factory -> {
+            factory.addContextCustomizers((context) -> {
+                String relativePath = "springboot-webmvc/src/main/webapp";
+                File docBaseFile = new File(relativePath);
+                if (docBaseFile.exists()) {
+                    //解决 Maven 多模块 JSP 无法读取的问题
+                    context.setDocBase(docBaseFile.getAbsolutePath());
+                }
+            });
+        });
+    }
+
 
 }
