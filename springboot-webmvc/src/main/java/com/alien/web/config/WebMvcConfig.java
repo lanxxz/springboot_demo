@@ -3,8 +3,10 @@ package com.alien.web.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.http.MediaType;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -29,7 +31,7 @@ public class WebMvcConfig implements WebMvcConfigurer  {
 //        <!--<property name="suffix" value=".jsp" />-->
 //    <!--</bean>-->
     @Bean
-    public ViewResolver viewResolver() {
+    public ViewResolver myViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setViewClass(JstlView.class);
         resolver.setPrefix("/WEB-INF/jsp/");
@@ -37,9 +39,17 @@ public class WebMvcConfig implements WebMvcConfigurer  {
         //ThymeleafViewResolver Ordered.LOWEST_PRECEDEENCE - 5
         //优先级设置成高于 ThymeleafViewResolver
         resolver.setOrder(Ordered.LOWEST_PRECEDENCE - 10);
-        //配置 ViewResolver 的 Content-Type
+        //配置 ViewResolver 的 Content-Type 页面采用 ?format=xml
         resolver.setContentType("text/xml;charset=UTF-8");
         return resolver;
+    }
+
+    @Override
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer.favorParameter(true) //是否支持请求参数的方式
+                .favorPathExtension(true);  //是否支持后缀的方式
+//              .parameterName("format")	//请求参数名
+//              .defaultContentType(MediaType.APPLICATION_ATOM_XML); //默认返回格式
     }
 
     @Override
