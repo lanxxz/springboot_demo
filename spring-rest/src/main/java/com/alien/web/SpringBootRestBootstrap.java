@@ -9,7 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Alien
  * @since 2019/4/18 22:37
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {
+        "com.alien.web.controller",
+        "com.alien.web.config"
+})
 public class SpringBootRestBootstrap {
 
     public static void main(String[] args) {

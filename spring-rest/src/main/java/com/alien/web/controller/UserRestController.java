@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserRestController {
 
     @PostMapping(value = "/echo/user",
-        consumes = "application/json,charset=UTF-8",
-        produces = "application/json,charset=UTF-8")
+        consumes = "application/json;charset=UTF-8",
+        produces = "application/json;charset=UTF-8")
     public User user(@RequestBody User user) {
         return user;
     }
