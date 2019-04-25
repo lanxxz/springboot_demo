@@ -9,11 +9,10 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -32,7 +31,23 @@ public class PropertiesHttpMessageConverter extends AbstractGenericHttpMessageCo
     @Override
     protected void writeInternal(Properties properties, Type type, HttpOutputMessage outputMessage)
             throws IOException, HttpMessageNotWritableException {
+        // properties -> String
+        //获取请求头
+        HttpHeaders headers = outputMessage.getHeaders();
+        //从请求头 Content-Type 解析编码
+        MediaType contentType = headers.getContentType();
+        //获取字符编码
+        Charset charset = contentType.getCharset();
+        //如果字符编码不存在 则采用默认编码 UTF-8
+        charset = charset == null? Charset.forName("UTF-8"): charset;
+        //字节输出流
+        OutputStream outputStream = outputMessage.getBody();
+        //字符输出流
+        Writer writer = new OutputStreamWriter(outputStream, charset);
 
+        //properties 写入到字符输出流
+        //第二个参数可以添加注释
+        properties.store(writer, "Form PropertiesHttpMessageConverter " + new Date());
     }
 
     @Override
