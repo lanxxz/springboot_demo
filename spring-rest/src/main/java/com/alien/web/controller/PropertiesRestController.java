@@ -17,6 +17,13 @@ import java.util.Properties;
 @RestController
 public class PropertiesRestController {
 
+
+    /*
+     * 1. @requestBody注解常用来处理content-type不是默认的application/x-www-form-urlcoded编码的内容，
+     * 比如说：application/json或者是application/xml等。一般情况下来说常用其来处理application/json类型
+     * 2. 通过@requestBody可以将请求体中的JSON字符串绑定到相应的bean上，
+     * 当然，也可以将其分别绑定到对应的字符串上
+     */
     @PostMapping(value = "/add/props",
         // Content-Type 过滤媒体类型
         consumes = "text/properties;charset=UTF-8"
@@ -34,6 +41,14 @@ public class PropertiesRestController {
 //            ,produces = "text/properties;charset=UTF-8"
     )
     public Properties returnProp(@RequestBody Properties properties) {
+        return properties;
+    }
+
+    @PostMapping(value = "add/properties2",
+            consumes = "text/properties;charset=UTF-8"
+//            ,produces = "text/properties;charset=UTF-8"
+    )
+    public Properties returnProp2(Properties properties) {
         return properties;
     }
 
