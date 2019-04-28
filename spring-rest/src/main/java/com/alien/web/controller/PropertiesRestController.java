@@ -18,10 +18,10 @@ import java.util.Properties;
 public class PropertiesRestController {
 
 
-    /*
-     * 1. @requestBody注解常用来处理content-type不是默认的application/x-www-form-urlcoded编码的内容，
-     * 比如说：application/json或者是application/xml等。一般情况下来说常用其来处理application/json类型
-     * 2. 通过@requestBody可以将请求体中的JSON字符串绑定到相应的bean上，
+    /**
+     * 1. {@link RequestBody}注解常用来处理content-type不是默认的application/x-www-form-urlcoded编码的内容，
+     * 比如说：application/json或者是application/xml等。一般情况下来说常用其来处理application/json类型<br/>
+     * 2. 通过{@link RequestBody}可以将请求体中的JSON字符串绑定到相应的bean上，
      * 当然，也可以将其分别绑定到对应的字符串上
      */
     @PostMapping(value = "/add/props",
