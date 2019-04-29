@@ -54,6 +54,7 @@ public class PropertiesHandlerMethodReturnValueHandler implements HandlerMethodR
         //将 PropertiesHttpMessageConverter 输出
         converter.write(properties, mediaType, message);
 
-
+        // 告知 Spring Web MVC 当前请求已经处理完毕
+        mavContainer.setRequestHandled(true);
     }
 }

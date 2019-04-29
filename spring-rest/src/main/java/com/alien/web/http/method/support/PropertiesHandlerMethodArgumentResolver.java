@@ -1,17 +1,16 @@
 package com.alien.web.http.method.support;
 
+import com.alien.web.http.converter.properties.PropertiesHttpMessageConverter;
 import org.springframework.core.MethodParameter;
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpInputMessage;
+import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
 import java.util.Properties;
 
 /**
@@ -30,21 +29,15 @@ public class PropertiesHandlerMethodArgumentResolver implements HandlerMethodArg
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                       NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 
+        //复用 PropertiesHttpMessageConverter 对象
+        PropertiesHttpMessageConverter resolver = new PropertiesHttpMessageConverter();
+        //强转成 ServletWebRequest
         ServletWebRequest servletWebRequest = (ServletWebRequest) webRequest;
-        //Servlet request API
+
         HttpServletRequest request = servletWebRequest.getRequest();
-        //获取请求头 Content-Type 中的媒体类型
-        String contentType = request.getHeader("Content-Type");
-        MediaType mediaType = MediaType.parseMediaType(contentType);
-        //获取字符编码
-        Charset charset = mediaType.getCharset();
-        charset = charset == null? Charset.forName("UTF-8"): charset;
-        //请求输入字节流
-        ServletInputStream inputStream = request.getInputStream();
-        InputStreamReader reader = new InputStreamReader(inputStream, charset);
-        //加载字节流成 Properties 对象
-        Properties properties = new Properties();
-        properties.load(reader);
-        return properties;
+
+        HttpInputMessage message = new ServletServerHttpRequest(request);
+
+        return resolver.read(null, null, message);
     }
 }
