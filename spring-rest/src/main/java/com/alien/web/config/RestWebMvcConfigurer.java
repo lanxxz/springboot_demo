@@ -1,11 +1,13 @@
 package com.alien.web.config;
 
 import com.alien.web.http.converter.properties.PropertiesHttpMessageConverter;
-import com.alien.web.http.support.PropertiesHandlerMethodArgumentResolver;
+import com.alien.web.http.method.support.PropertiesHandlerMethodArgumentResolver;
+import com.alien.web.http.method.support.PropertiesHandlerMethodReturnValueHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
@@ -46,6 +48,16 @@ public class RestWebMvcConfigurer implements WebMvcConfigurer {
         newResolvers.addAll(resolvers);
         //重新设置 Resolver 对象集合
         requestMappingHandlerAdapter.setArgumentResolvers(newResolvers);
+
+        //获取当前 requestMappingHandlerAdapter 的所有 handler 对象
+        List<HandlerMethodReturnValueHandler> handlers = requestMappingHandlerAdapter.getReturnValueHandlers();
+        List<HandlerMethodReturnValueHandler> newhandlers = new ArrayList<>(handlers.size() + 1);
+        //添加 PropertiesHandlerMethodReturnValueHandler 到 集合首位
+        newhandlers.add(new PropertiesHandlerMethodReturnValueHandler());
+        //添加 已注册的 handler 对象集合
+        newhandlers.addAll(handlers);
+        //重新设置 handler 对象集合
+        requestMappingHandlerAdapter.setReturnValueHandlers(newhandlers);
     }
 
     @Override

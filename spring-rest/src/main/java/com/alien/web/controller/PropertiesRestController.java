@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
 
 import java.util.Properties;
 
@@ -14,7 +14,8 @@ import java.util.Properties;
  * @author Alien
  * @since 2019/4/24 23:29
  */
-@RestController
+//@RestController
+@Controller
 public class PropertiesRestController {
 
 
@@ -46,7 +47,6 @@ public class PropertiesRestController {
 
     @PostMapping(value = "add/properties2",
             consumes = "text/properties;charset=UTF-8"
-//            ,produces = "text/properties;charset=UTF-8"
     )
     public Properties returnProp2(Properties properties) {
         return properties;
