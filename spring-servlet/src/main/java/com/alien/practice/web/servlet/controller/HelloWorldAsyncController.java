@@ -18,12 +18,18 @@ public class HelloWorldAsyncController {
         DeferredResult<String> result = new DeferredResult<String>();
 
         result.setResult("Hello, My World!");
+        println("Hello,world!");
         //完成时
         result.onCompletion(() -> {
-            System.out.println("HelloWorldAsyncController helloWorld() 执行结束！");
+            println("执行结束！");
         });
 
         return result;
+    }
+
+    private void println(Object object) {
+        String name = Thread.currentThread().getName();
+        System.out.println("HelloWorldAsyncController Name[" + name + "]: " + object);
     }
 
 }
