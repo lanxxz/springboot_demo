@@ -15,13 +15,18 @@ public class HelloWorldAsyncController {
 
     @GetMapping("/hello-world")
     public DeferredResult<String> helloWorld() {
-        DeferredResult<String> result = new DeferredResult<String>();
+        // 不填休眠时间为 Tomcat 默认的时间， 此处是休眠 50 毫秒
+        DeferredResult<String> result = new DeferredResult<String>(50L);
 
-        result.setResult("Hello, My World!");
+//        result.setResult("Hello, My World!");
         println("Hello,world!");
         //完成时
         result.onCompletion(() -> {
             println("执行结束！");
+        });
+
+        result.onTimeout(() -> {
+            println("执行超时");
         });
 
         return result;
