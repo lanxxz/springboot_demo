@@ -9,6 +9,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
 
 /**
  * Hello World 异步 {@link RestController}
@@ -61,6 +62,17 @@ public class HelloWorldAsyncController {
         });
 
         return result;
+    }
+
+    @GetMapping("/callable-hello-world")
+    public Callable<String> callableHelloWorld() {
+        final long startTime = System.currentTimeMillis();
+        println("Hello,world!");
+        return () -> {
+            long costTime = System.currentTimeMillis() - startTime;
+            println("执行计算结果，消耗：" + costTime + " ms.");
+            return "Hello,world!";
+        };
     }
 
     private void println(Object object) {
