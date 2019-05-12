@@ -11,7 +11,10 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * @since 2019/5/7 23:18
  */
 //@Configuration
-@ComponentScan(basePackages = "com.alien.practice.web.servlet.controller")
+@ComponentScan(basePackages = {
+        "com.alien.practice.web.servlet.controller",
+        "com.alien.practice.web.servlet.config"
+})
 public class DefaultAnnotationConfigDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
