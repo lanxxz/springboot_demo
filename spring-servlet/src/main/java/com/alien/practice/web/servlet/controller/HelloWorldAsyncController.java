@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 
 import java.util.Random;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
+import java.util.concurrent.*;
 
 /**
  * Hello World 异步 {@link RestController}
@@ -43,6 +41,9 @@ public class HelloWorldAsyncController {
         } while (result != null);
     }
 
+    /**
+     * {@link DeferredResult} 实现异步操作
+     */
     @GetMapping("/hello-world")
     public DeferredResult<String> helloWorld() {
         // 不填休眠时间为 Tomcat 默认的时间， 此处是休眠 50 毫秒
@@ -64,6 +65,9 @@ public class HelloWorldAsyncController {
         return result;
     }
 
+    /**
+     * {@link Callable} 实现异步操作
+     */
     @GetMapping("/callable-hello-world")
     public Callable<String> callableHelloWorld() {
         final long startTime = System.currentTimeMillis();
@@ -73,6 +77,20 @@ public class HelloWorldAsyncController {
             println("执行计算结果，消耗：" + costTime + " ms.");
             return "Hello,world!";
         };
+    }
+
+    /**
+     * {@link CompletionStage} 实现异步操作
+     */
+    @GetMapping("/completion-stage")
+    public CompletionStage<String> completionStage() {
+        final long startTime = System.currentTimeMillis();
+        println("Hello,world!");
+        return CompletableFuture.supplyAsync(() -> {
+            long costTime = System.currentTimeMillis() - startTime;
+            println("执行计算结果，消耗：" + costTime + " ms.");
+            return "Hello,world!"; //异步执行结果
+        });
     }
 
     private void println(Object object) {
