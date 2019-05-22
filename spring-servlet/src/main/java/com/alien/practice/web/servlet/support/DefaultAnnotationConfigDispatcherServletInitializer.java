@@ -1,12 +1,18 @@
 package com.alien.practice.web.servlet.support;
 
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
 /**
  * Spring Web MVC 自动装配 默认实现
- *
+ * <br/>
+ * 父类 {@link AbstractDispatcherServletInitializer} 中将异步支持默认设置为 true。代码如下：<br/>
+ * <code>
+ *     protected boolean isAsyncSupported() { <br/>
+ * 	&nbsp;&nbsp;return true; <br/>
+ *     } <br/>
+ * </code>
  * @author Alien
  * @since 2019/5/7 23:18
  */
