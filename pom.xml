@@ -28,6 +28,7 @@
         <module>springboot-webmvc</module>
         <module>spring-rest</module>
         <module>spring-servlet</module>
+        <module>spring-boot-servlet</module>
     </modules>
 
     <!-- 使用 pom 表示主工程 （将多个model合并） -->
