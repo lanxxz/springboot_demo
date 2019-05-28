@@ -12,6 +12,12 @@
     <artifactId>spring-boot-servlet</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!-- 引入 spring-servlet 子模块作为依赖 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
